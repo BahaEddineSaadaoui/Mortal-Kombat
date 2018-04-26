@@ -11,13 +11,13 @@
                         <% @weapons.each do |weapon| %>
                             <tr>
                                 <td>
-                                    <%= image_tag cl_image_path(weapon.photo.url), width: 50 %>
+                                    <%= image_tag cl_image_path(weapon.photo.url), width: 100 %>
                                 </td>
                                 <td>
-                                    <h1 class="text"><%= weapon.name %> | </h1>
+                                    <h3 class="text"><%= weapon.name %></h3>
                                 </td>
                                 <td>
-                                    <h1 class="text"><%= weapon.damage_level %> pts</h1>
+                                    <h3 class="text"><%= weapon.damage_level %> pts</h3>
                                 </td>
                                 <td>
                                     <%= link_to '<button type="button" class="btn btn-dark">Edit</button>'.html_safe, edit_weapon_path(weapon) %>

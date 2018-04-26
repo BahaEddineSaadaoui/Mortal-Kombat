@@ -2,12 +2,14 @@ html {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-body { 
-  background-image: image-url('bg.jpg');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+body {
+    background-image: image-url('bg.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .slogan {
@@ -18,10 +20,11 @@ body {
 }
 
 .title {
-    color: #C0C0C0;
+    color: #FFA500;
     text-shadow: 0 0 0.2em #000;
     -moz-text-shadow: 0 0 0.2em #000;
     -webkit-text-shadow: 0 0 0.2em #000;
+    margin-top: 10px;
 }
 
 .text {
@@ -55,8 +58,55 @@ body {
 .centre-container {
     margin: 0 auto;
     width: 50%;
+    padding: 10px;
+}
+
+.wide {
+    width: 100%;
+    padding: 10px;
 }
 
 .logo {
-	width: 100%;
+    width: 100%;
+}
+
+.vs {
+    width: 100%;
+    display: none;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.selectable {
+    margin: 10px;
+}
+
+.selectable:hover {
+    -moz-box-shadow: 0 0 50px #F00;
+    -webkit-box-shadow: 0 0 50px #F00;
+    box-shadow: 0 0 50px #F00;
+    cursor: pointer;
+}
+
+.selected {
+    -moz-box-shadow: 0 0 50px #F00;
+    -webkit-box-shadow: 0 0 50px #F00;
+    box-shadow: 0 0 50px #F00;
+    background: rgba(255, 165, 0, 0.3)
+}
+
+#fighter-one,
+#fighter-two,
+#weapons-one,
+#weapons-two {
+    display: none;
+}
+
+#begin {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
 }

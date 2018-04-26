@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 20180424193536) do
     t.integer "url_file_size"
     t.datetime "url_updated_at"
     t.integer "fighter_id"
-    t.integer "weapon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

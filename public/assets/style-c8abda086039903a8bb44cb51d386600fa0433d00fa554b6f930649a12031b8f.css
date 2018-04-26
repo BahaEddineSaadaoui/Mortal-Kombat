@@ -1,0 +1,130 @@
+/* line 1, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+html {
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+/* line 5, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+body {
+  background-image: url(/assets/bg-115c84d7d0f802f9a29d5a9ea5ca5247acfc1e438161be28e059f36f0c5084e9.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/* line 15, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.slogan {
+  color: red;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 22, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.title {
+  color: #FFA500;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+  margin-top: 10px;
+}
+
+/* line 30, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.text {
+  color: #EEE;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 37, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.alias {
+  width: 100px;
+  border-radius: 50%;
+}
+
+/* line 42, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.label {
+  color: #FF0000;
+  font-size: 20px;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 50, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+#notice {
+  color: #00FF00;
+  font-size: 20px;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 58, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.centre-container {
+  margin: 0 auto;
+  width: 50%;
+  padding: 10px;
+}
+
+/* line 64, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.wide {
+  width: 100%;
+  padding: 10px;
+}
+
+/* line 69, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.logo {
+  width: 100%;
+}
+
+/* line 73, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.vs {
+  width: 100%;
+  display: none;
+}
+
+/* line 78, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+/* line 83, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.selectable {
+  margin: 10px;
+}
+
+/* line 87, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.selectable:hover {
+  -moz-box-shadow: 0 0 50px #F00;
+  -webkit-box-shadow: 0 0 50px #F00;
+  box-shadow: 0 0 50px #F00;
+  cursor: pointer;
+}
+
+/* line 94, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.selected {
+  -moz-box-shadow: 0 0 50px #F00;
+  -webkit-box-shadow: 0 0 50px #F00;
+  box-shadow: 0 0 50px #F00;
+  background: rgba(255, 165, 0, 0.3);
+}
+
+/* line 101, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+#fighter-one,
+#fighter-two,
+#weapons-one,
+#weapons-two {
+  display: none;
+}
+
+/* line 108, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+#begin {
+  display: none;
+  width: 100%;
+  margin-top: 20px;
+}

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :weapons
   resources :progresses
   resources :fighters
+  get 'arena' => 'front#arena'
   root to: "front#index"
 end
