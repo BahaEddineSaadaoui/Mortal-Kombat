@@ -1,5 +1,10 @@
-<h1>New Weapon</h1>
-
-<%= render 'form', weapon: @weapon %>
-
-<%= link_to 'Back', weapons_path %>
+<div class='centre-container'>
+<%= link_to '<button type="button" class="btn btn-warning">Weapons</button>'.html_safe, weapons_path %>
+    <center>
+        <h1 class="title">New Weapon</h1>
+        <p id="notice">
+            <%= notice %>
+        </p>
+        <%= render 'form', weapon: @weapon %>
+    </center>
+</div>

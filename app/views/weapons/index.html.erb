@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Weapons</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @weapons.each do |weapon| %>
-      <tr>
-        <td><%= link_to 'Show', weapon %></td>
-        <td><%= link_to 'Edit', edit_weapon_path(weapon) %></td>
-        <td><%= link_to 'Destroy', weapon, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Weapon', new_weapon_path %>
+<div class='centre-container'>
+    <%= link_to '<button type="button" class="btn btn-warning">Home</button>'.html_safe, root_path %>
+        <center>
+            <h1 class="title">Weapons</h1>
+            <p id="notice">
+                <%= notice %>
+            </p>
+            <%= link_to '<button type="button" class="btn btn-dark">Add a Weapon</button>'.html_safe, new_weapon_path %>
+                <table cellspacing="10" cellpadding="10">
+                    <tbody>
+                        <% @weapons.each do |weapon| %>
+                            <tr>
+                                <td>
+                                    <%= image_tag cl_image_path(weapon.photo.url), width: 50 %>
+                                </td>
+                                <td>
+                                    <h1 class="text"><%= weapon.name %> | </h1>
+                                </td>
+                                <td>
+                                    <h1 class="text"><%= weapon.damage_level %> pts</h1>
+                                </td>
+                                <td>
+                                    <%= link_to '<button type="button" class="btn btn-dark">Edit</button>'.html_safe, edit_weapon_path(weapon) %>
+                                </td>
+                                <td>
+                                    <%= link_to "<button type='button' class='btn btn-danger'>Delete</button>".html_safe, weapon, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                </td>
+                            </tr>
+                            <% end %>
+                    </tbody>
+                </table>
+        </center>
+</div>

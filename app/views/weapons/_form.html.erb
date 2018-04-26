@@ -1,17 +1,31 @@
 <%= form_with(model: weapon, local: true) do |form| %>
-  <% if weapon.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(weapon.errors.count, "error") %> prohibited this weapon from being saved:</h2>
-
-      <ul>
-      <% weapon.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+    <% if weapon.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(weapon.errors.count, "error") %> prohibited this weapon from being saved:</h2>
+            <ul>
+                <% weapon.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+        <% end %>
+            <div class="form-group">
+                <label for="name" class="label">Name</label>
+                <%= form.text_field :name, class: 'form-control', :required => true %>
+            </div>
+            <div class="form-group">
+                <label for="damage_level" class="label">Damage level</label>
+                <%= form.number_field :damage_level, :value => 20, class: 'form-control', :required => true %>
+            </div>
+            <%= form.fields_for :photo_attributes do |f| %>
+                <div class="form-group">
+                    <label for="name" class="label">Alias</label>
+                    <%= f.file_field :url, class: 'form-control' %>
+                </div>
+                <% end %>
+                    <div class="actions">
+                        <%= form.submit class: 'btn btn-dark' %>
+                    </div>
+                    <% end %>

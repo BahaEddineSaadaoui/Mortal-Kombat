@@ -28,7 +28,7 @@ class WeaponsController < ApplicationController
 
     respond_to do |format|
       if @weapon.save
-        format.html { redirect_to @weapon, notice: 'Weapon was successfully created.' }
+        format.html { redirect_to weapons_url, notice: 'Weapon was successfully created.' }
         format.json { render :show, status: :created, location: @weapon }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class WeaponsController < ApplicationController
   def update
     respond_to do |format|
       if @weapon.update(weapon_params)
-        format.html { redirect_to @weapon, notice: 'Weapon was successfully updated.' }
+        format.html { redirect_to weapons_url, notice: 'Weapon was successfully updated.' }
         format.json { render :show, status: :ok, location: @weapon }
       else
         format.html { render :edit }
@@ -69,6 +69,6 @@ class WeaponsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def weapon_params
-      params.fetch(:weapon, {})
+      params.require(:weapon).permit( :name, :damage_level, photo_attributes: [ :id, :url ])
     end
 end
