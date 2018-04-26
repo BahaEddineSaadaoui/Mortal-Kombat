@@ -1,0 +1,18 @@
+development:
+  cloud_name: drixwi6si
+  api_key: '361765357526584'
+  api_secret: ZmtS-Y06OpAYK6b9Gv12UWApUX4
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: drixwi6si
+  api_key: '361765357526584'
+  api_secret: ZmtS-Y06OpAYK6b9Gv12UWApUX4
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: drixwi6si
+  api_key: '361765357526584'
+  api_secret: ZmtS-Y06OpAYK6b9Gv12UWApUX4
+  enhance_image_tag: true
+  static_image_support: false

@@ -1,5 +1,10 @@
 <div class='centre-container'>
 	<%= image_tag("logo.png", class: "logo") %>
-    <center><h1>Let the fight begin</h1></center>
+    <center>
+    	<h1 class="slogan">Let the fight begin !</h1>
+    	
+    	<%= link_to '<button type="button" class="btn btn-dark">Fighters</button>'.html_safe, fighters_path %>
+    	<%= link_to '<button type="button" class="btn btn-dark">Weapons</button>'.html_safe, weapons_path %>
+    	<button type="button" class="btn btn-danger">ARENA</button>
+    </center>
 </div>
-

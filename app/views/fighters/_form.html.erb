@@ -1,0 +1,27 @@
+<%= form_with(model: fighter, local: true) do |form| %>
+    <% if fighter.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(fighter.errors.count, "error") %> prohibited this fighter from being saved:</h2>
+            <ul>
+                <% fighter.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                    <% end %>
+            </ul>
+        </div>
+        <% end %>
+            <div class="form-group">
+                <label for="name" class="label">Name</label>
+                <%= form.text_field :name, class: 'form-control', :required => true %>
+            </div>
+            <%= form.fields_for :photo_attributes do |f| %>
+                <div class="form-group">
+                    <label for="name" class="label">Alias</label>
+                    <%= f.file_field :url, class: 'form-control' %>
+                </div>
+                <% end %>
+                    <div class="actions">
+                        <%= form.submit class: 'btn btn-dark' %>
+                    </div>
+                    <% end %>

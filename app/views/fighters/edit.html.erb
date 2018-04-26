@@ -1,0 +1,10 @@
+<div class='centre-container'>
+<%= link_to '<button type="button" class="btn btn-warning">Fighters</button>'.html_safe, fighters_path %>
+    <center>
+        <h1 class="title">Edit Fighter</h1>
+        <p id="notice">
+            <%= notice %>
+        </p>
+        <%= render 'form', fighter: @fighter %>
+    </center>
+</div>

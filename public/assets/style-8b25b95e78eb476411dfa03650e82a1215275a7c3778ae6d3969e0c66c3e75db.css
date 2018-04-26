@@ -1,0 +1,68 @@
+/* 
+    Created on : 17-mrt-2014, 14:58:29
+    Author     : g.v.lankveld
+*/
+/* line 7, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  background-image: url(/assets/bg-115c84d7d0f802f9a29d5a9ea5ca5247acfc1e438161be28e059f36f0c5084e9.jpg);
+}
+
+/* line 12, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.slogan {
+  color: red;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 19, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.title {
+  color: #C0C0C0;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 26, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.text {
+  color: #EEE;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 33, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.alias {
+  width: 100px;
+  border-radius: 50%;
+}
+
+/* line 38, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.label {
+  color: #FF0000;
+  font-size: 20px;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 46, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+#notice {
+  color: #00FF00;
+  font-size: 20px;
+  text-shadow: 0 0 0.2em #000;
+  -moz-text-shadow: 0 0 0.2em #000;
+  -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+/* line 54, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.centre-container {
+  margin: 0 auto;
+  width: 50%;
+}
+
+/* line 59, /home/saadaoui/Desktop/Jobs/Captain Contrat/Mortal Kombat/app/assets/stylesheets/style.css.scss */
+.logo {
+  width: 100%;
+}

@@ -1,0 +1,30 @@
+<div class='centre-container'>
+    <%= link_to '<button type="button" class="btn btn-warning">Home</button>'.html_safe, root_path %>
+        <center>
+            <h1 class="title">Fighters</h1>
+            <p id="notice">
+                <%= notice %>
+            </p>
+            <%= link_to '<button type="button" class="btn btn-dark">Add a Fighter</button>'.html_safe, new_fighter_path %>
+                <table cellspacing="10" cellpadding="10">
+                    <tbody>
+                        <% @fighters.each do |fighter| %>
+                            <tr>
+                                <td>
+                                    <%= image_tag cl_image_path(fighter.photo.url), class: 'alias' %>
+                                </td>
+                                <td>
+                                    <h1 class="text"><%= fighter.name %></h1>
+                                </td>
+                                <td>
+                                    <%= link_to '<button type="button" class="btn btn-dark">Edit</button>'.html_safe, edit_fighter_path(fighter) %>
+                                </td>
+                                <td>
+                                    <%= link_to "<button type='button' class='btn btn-danger'>Delete</button>".html_safe, fighter, method: :delete, data: { confirm: 'Are you sure?' } %>
+                                </td>
+                            </tr>
+                            <% end %>
+                    </tbody>
+                </table>
+        </center>
+</div>
