@@ -37,6 +37,7 @@ body {
 .alias {
     width: 100px;
     border-radius: 50%;
+    margin: 10px;
 }
 
 .label {
@@ -96,6 +97,50 @@ body {
     -webkit-box-shadow: 0 0 50px #F00;
     box-shadow: 0 0 50px #F00;
     background: rgba(255, 165, 0, 0.3)
+}
+
+.winner {
+    -moz-box-shadow: 0 0 50px #0F0;
+    -webkit-box-shadow: 0 0 50px #0F0;
+    box-shadow: 0 0 50px #0F0;
+}
+
+.winner-label {
+    color: #00FF00;
+    font-size: 30px;
+    text-shadow: 0 0 0.2em #0F0;
+    -moz-text-shadow: 0 0 0.2em #0F0;
+    -webkit-text-shadow: 0 0 0.2em #0F0;
+}
+
+.loser {
+    -moz-box-shadow: 0 0 50px #F00;
+    -webkit-box-shadow: 0 0 50px #F00;
+    box-shadow: 0 0 50px #F00;
+}
+
+.loser-label {
+    color: #FF0000;
+    font-size: 30px;
+    text-shadow: 0 0 0.2em #000;
+    -moz-text-shadow: 0 0 0.2em #000;
+    -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+.log {
+    color: #FFFFFF;
+    font-size: 20px;
+    text-shadow: 0 0 0.2em #000;
+    -moz-text-shadow: 0 0 0.2em #000;
+    -webkit-text-shadow: 0 0 0.2em #000;
+}
+
+.summary {
+    color: #000;
+    font-size: 50px;
+    text-shadow: 0 0 0.2em #FFA500;
+    -moz-text-shadow: 0 0 0.2em #FFA500;
+    -webkit-text-shadow: 0 0 0.2em #FFA500;
 }
 
 #fighter-one,

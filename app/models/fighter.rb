@@ -5,6 +5,6 @@ class Fighter < ApplicationRecord
   has_one :progress
 
   def is_stronger enemy
-    (experience - enemy.experience) < 0
+    (experience - enemy.experience) > 0
   end
 end

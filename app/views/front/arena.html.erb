@@ -1,1 +1,46 @@
-<%=@log.html_safe%>
+<div class="container wide">
+    <%= link_to '<button type="button" class="btn btn-warning">Home</button>'.html_safe, root_path %>
+        <center>
+            <div class="row">
+                <div class="col-3">
+                    <%= image_tag cl_image_path(@winner[:fighter].photo.url), class: 'alias winner' %>
+                </div>
+                <div class="col-3">
+                    <p class="winner-label">
+                        <%=100 - @loser[:lifes]%> points</p>
+                </div>
+                <div class="col-3">
+                    <p class="loser-label">
+                        <%=100 - @winner[:lifes]%> points</p>
+                </div>
+                <div class="col-3">
+                    <%= image_tag cl_image_path(@loser[:fighter].photo.url), class: 'alias loser' %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p class="winner-label">
+                        <%=@winner[:fighter].name%>
+                            <br> is the winner</p>
+                </div>
+                <div class="col-6">
+                    <p class="loser-label">
+                        <%=@loser[:fighter].name%>
+                            <br> lost the fight</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 summary">
+                    Fight summary
+                </div>
+            </div>
+            <div class="row log">
+                <div class="col-6">
+                    <%=@winner[:log].html_safe%>
+                </div>
+                <div class="col-6">
+                    <%=@loser[:log].html_safe%>
+                </div>
+            </div>
+        </center>
+</div>

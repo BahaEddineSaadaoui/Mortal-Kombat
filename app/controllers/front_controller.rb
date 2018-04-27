@@ -9,7 +9,6 @@ class FrontController < ApplicationController
   end
 
   def arena
-    @log = ""
     f_one = Fighter.find(params["fighter-one"])
     f_two = Fighter.find(params["fighter-two"])
     w_one = []
@@ -21,8 +20,8 @@ class FrontController < ApplicationController
       w_two << Weapon.find(w)
     end
 
-    first_fighter = {:id => 1, :fighter => f_one, :weapons => w_one, :lifes => 100 }
-    second_fighter = {:id => 2, :fighter => f_two, :weapons => w_two, :lifes => 100 }
+    first_fighter = {:id => 1, :fighter => f_one, :weapons => w_one, :lifes => 100, :log => "" }
+    second_fighter = {:id => 2, :fighter => f_two, :weapons => w_two, :lifes => 100, :log => "" }
 
     loop do
       shield_used = [true, false, false, false, true, false, false]
@@ -34,65 +33,112 @@ class FrontController < ApplicationController
         beater = second_fighter
         beaten = first_fighter
       end
-      @log += "#{beater[:fighter].name} is attacking,"
+      beater[:log] += "#{beater[:fighter].name} is attacking,<br>"
+      beaten[:log] += "<br>"
       if beater[:weapons].blank?
-        @log += " and is out of weapons<br>"
+        beater[:log] += " and is out of weapons<br>"
+        beaten[:log] += "<br>"
         hit_damage = [5, 10, 15, 20].sample
         if shield_used.sample
-          @log += "#{beaten[:fighter].name} is using his shield for protection<br>"
+          beater[:log] += "<br>"
+          beaten[:log] += "#{beaten[:fighter].name} is using his shield for protection<br>"
           if beater[:fighter].is_stronger(beaten[:fighter])
-            @log += "#{beater[:fighter].name} is more experienced than #{beaten[:fighter].name},"
+            beater[:log] += "#{beater[:fighter].name} is more experienced than #{beaten[:fighter].name},<br>"
+            beaten[:log] += "<br>"
             if experience_considered.sample
-              @log += " he hit #{beaten[:fighter].name}<br>"
+              beater[:log] += " he hit #{beaten[:fighter].name}<br>"
+              beaten[:log] += "<br>"
               (beaten[:id] == 1) ? first_fighter[:lifes] -= hit_damage : second_fighter[:lifes] -= hit_damage
-              @log += "#{beaten[:fighter].name} lost #{hit_damage} points<br>"
+              beaten[:log] += "#{beaten[:fighter].name} lost #{hit_damage} points<br>"
+              beater[:log] += "<br>"
             else
-              @log += " he tried to attack but"
-              @log += " #{beaten[:fighter].name} avoided the attack with his shield<br>"
+              beater[:log] += " he tried to attack but<br>"
+              beaten[:log] += "<br>"
+              beater[:log] += "<br>"
+              beaten[:log] += " #{beaten[:fighter].name} avoided the attack with his shield<br>"
             end
           end
         else
-          @log += "#{beaten[:fighter].name} couldn't use his shield,"
-          @log += "#{beater[:fighter].name} hit #{beaten[:fighter].name}<br>"
+          beater[:log] += "<br>"
+          beaten[:log] += "#{beaten[:fighter].name} couldn't use his shield,<br>"
+          beater[:log] += "#{beater[:fighter].name} hit #{beaten[:fighter].name}<br>"
+          beaten[:log] += "<br>"
           (beaten[:id] == 1) ? first_fighter[:lifes] -= hit_damage : second_fighter[:lifes] -= hit_damage
-          @log += "#{beaten[:fighter].name} lost #{hit_damage} points<br>"
+          beaten[:log] += "#{beaten[:fighter].name} lost #{hit_damage} points<br>"
+          beater[:log] += "<br>"
         end
       else
-        @log += " and still have weapons"
+        beater[:log] += " and still have weapons<br>"
+        beaten[:log] += "<br>"
         weapon = beater[:weapons].sample
-        @log += " he will use his #{weapon.name}<br>"
+        beater[:log] += " he will use his #{weapon.name}<br>"
+        beaten[:log] += "<br>"
         if shield_used.sample
-          @log += "#{beaten[:fighter].name} is using his shield for protection<br>"
+          beaten[:log] += "#{beaten[:fighter].name} is using his shield for protection<br>"
+          beater[:log] += "<br>"
           if beater[:fighter].is_stronger(beaten[:fighter])
-            @log += "#{beater[:fighter].name} is more experienced than #{beaten[:fighter].name},"
+            beater[:log] += "#{beater[:fighter].name} is more experienced than #{beaten[:fighter].name},<br>"
+            beaten[:log] += "<br>"
             if experience_considered.sample
-              @log += " #{beater[:fighter].name} attacked #{beaten[:fighter].name} with his #{weapon.name}<br>"
+              beater[:log] += " #{beater[:fighter].name} attacked #{beaten[:fighter].name} with his #{weapon.name}<br>"
+              beaten[:log] += "<br>"
               (beaten[:id] == 1) ? first_fighter[:lifes] -= weapon.damage_level : second_fighter[:lifes] -= weapon.damage_level
-              @log += "#{beaten[:fighter].name} lost #{weapon.damage_level} points<br>"
+              beaten[:log] += "#{beaten[:fighter].name} lost #{weapon.damage_level} points<br>"
+              beater[:log] += "<br>"
               beater[:weapons].delete(weapon)
             else
-              @log += " he tried to attack but"
-              @log += "#{beaten[:fighter].name} avoided the attack with his shield<br>"
+              beater[:log] += " he tried to attack but<br>"
+              beaten[:log] += "<br>"
+              beaten[:log] += "#{beaten[:fighter].name} avoided the attack with his shield<br>"
+              beater[:log] += "<br>"
             end
           end
         else
-          @log += "#{beaten[:fighter].name} couldn't use his shield,"
+          beaten[:log] += "#{beaten[:fighter].name} couldn't use his shield,<br>"
+          beater[:log] += "<br>"
           (beaten[:id] == 1) ? first_fighter[:lifes] -= weapon.damage_level : second_fighter[:lifes] -= weapon.damage_level
-          @log += " he lost #{weapon.damage_level} points<br>"
+          beaten[:log] += " he lost #{weapon.damage_level} points<br>"
+          beater[:log] += "<br>"
           beater[:weapons].delete(weapon)
         end
       end
       if first_fighter[:lifes] <= 0
-        @log += "#{first_fighter[:fighter].name} lost the fight<br>"
-        @log += "#{second_fighter[:fighter].name} is the winner !<br>"
+        first_fighter[:log] += "<p class='loser-label'>#{first_fighter[:fighter].name} lost the fight</p><br>"
+        second_fighter[:log] += "<p class='winner-label'>#{second_fighter[:fighter].name} is the winner !</p><br>"
+        @winner = second_fighter
+        @loser = first_fighter
+        fight = Fight.new
+        fight.winner_id = @winner[:fighter].id
+        fight.loser_id = @loser[:fighter].id
+        fight.log = "#{@winner[:log]}|#{@loser[:log]}"
+        fight.save
+        @winner[:fighter].experience += 1
+        @winner[:fighter].save
         break
       elsif second_fighter[:lifes] <= 0
-        @log += "#{second_fighter[:fighter].name} lost the fight<br>"
-        @log += "#{first_fighter[:fighter].name} is the winner !<br>"
+        second_fighter[:log] += "<p class='loser-label'>#{second_fighter[:fighter].name} lost the fight</p><br>"
+        first_fighter[:log] += "<p class='winner-label'>#{first_fighter[:fighter].name} is the winner !</p><br>"
+        @winner = first_fighter
+        @loser = second_fighter
+        fight = Fight.new
+        fight.winner_id = @winner[:fighter].id
+        fight.loser_id = @loser[:fighter].id
+        fight.log = "#{@winner[:log]}|#{@loser[:log]}"
+        fight.save
+        @winner[:fighter].experience += 1
+        @winner[:fighter].save
         break
       end
     end
 
+  end
+
+  def history
+    @fights = Fight.all
+    @logs = []
+    @fights.each do |fight|
+      @logs << { :winner => Fighter.find(fight.winner_id), :winner_log => fight.log.split("|")[0], :loser => Fighter.find(fight.loser_id), :loser_log => fight.log.split("|")[1] }
+    end
   end
 
 end
