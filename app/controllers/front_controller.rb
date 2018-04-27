@@ -111,6 +111,8 @@ class FrontController < ApplicationController
         fight.winner_id = @winner[:fighter].id
         fight.loser_id = @loser[:fighter].id
         fight.log = "#{@winner[:log]}|#{@loser[:log]}"
+        fight.winner_score = 100 - @loser[:lifes]
+        fight.loser_score = 100 - @winner[:lifes]
         fight.save
         @winner[:fighter].experience += 1
         @winner[:fighter].save
