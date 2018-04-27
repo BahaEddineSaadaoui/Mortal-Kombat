@@ -124,6 +124,8 @@ class FrontController < ApplicationController
         fight.winner_id = @winner[:fighter].id
         fight.loser_id = @loser[:fighter].id
         fight.log = "#{@winner[:log]}|#{@loser[:log]}"
+        fight.winner_score = 100 - @loser[:lifes]
+        fight.loser_score = 100 - @winner[:lifes]
         fight.save
         @winner[:fighter].experience += 1
         @winner[:fighter].save
@@ -131,14 +133,6 @@ class FrontController < ApplicationController
       end
     end
 
-  end
-
-  def history
-    @fights = Fight.all
-    @logs = []
-    @fights.each do |fight|
-      @logs << { :winner => Fighter.find(fight.winner_id), :winner_log => fight.log.split("|")[0], :loser => Fighter.find(fight.loser_id), :loser_log => fight.log.split("|")[1] }
-    end
   end
 
 end

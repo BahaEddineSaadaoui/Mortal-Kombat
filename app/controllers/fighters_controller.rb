@@ -5,6 +5,7 @@ class FightersController < ApplicationController
   # GET /fighters.json
   def index
     @fighters = Fighter.all
+    @fighters = @fighters.sort_by{|f| -f.experience}
   end
 
   # GET /fighters/1

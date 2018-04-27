@@ -1,4 +1,46 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_fight_path(@fight) %> |
-<%= link_to 'Back', fights_path %>
+<div class="container wide">
+    <%= link_to '<button type="button" class="btn btn-warning">Fights</button>'.html_safe, fights_path %>
+        <center>
+            <div class="row">
+                <div class="col-3">
+                    <%= image_tag cl_image_path(@log[:winner].photo.url), class: 'alias winner' %>
+                </div>
+                <div class="col-3">
+                    <p class="winner-label">
+                        <%=@log[:winner_score]%> points</p>
+                </div>
+                <div class="col-3">
+                    <p class="loser-label">
+                        <%=@log[:loser_score]%> points</p>
+                </div>
+                <div class="col-3">
+                    <%= image_tag cl_image_path(@log[:loser].photo.url), class: 'alias loser' %>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <p class="winner-label">
+                        <%=@log[:winner].name%>
+                            <br> is the winner</p>
+                </div>
+                <div class="col-6">
+                    <p class="loser-label">
+                        <%=@log[:loser].name%>
+                            <br> lost the fight</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 summary">
+                    Fight summary
+                </div>
+            </div>
+            <div class="row log">
+                <div class="col-6">
+                    <%=@log[:winner_log].html_safe%>
+                </div>
+                <div class="col-6">
+                    <%=@log[:loser_log].html_safe%>
+                </div>
+            </div>
+        </center>
+</div>

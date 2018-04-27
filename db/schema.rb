@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180426223433) do
+ActiveRecord::Schema.define(version: 20180427183821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,6 @@ ActiveRecord::Schema.define(version: 20180426223433) do
     t.string "name", null: false
     t.integer "photo_id"
     t.integer "experience", default: 0
-    t.boolean "is_fighting", default: false
-    t.integer "progress_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,6 +29,8 @@ ActiveRecord::Schema.define(version: 20180426223433) do
     t.text "log"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "winner_score"
+    t.integer "loser_score"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -39,27 +39,6 @@ ActiveRecord::Schema.define(version: 20180426223433) do
     t.integer "url_file_size"
     t.datetime "url_updated_at"
     t.integer "fighter_id"
-    t.integer "weapon_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "progresses", force: :cascade do |t|
-    t.integer "lifes"
-    t.integer "damages"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "fighter_id"
-  end
-
-  create_table "progresses_weapons", id: false, force: :cascade do |t|
-    t.bigint "progress_id", null: false
-    t.bigint "weapon_id", null: false
-    t.index ["progress_id", "weapon_id"], name: "index_progresses_weapons_on_progress_id_and_weapon_id"
-  end
-
-  create_table "progressweapons", force: :cascade do |t|
-    t.integer "progress_id"
     t.integer "weapon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

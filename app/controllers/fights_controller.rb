@@ -5,11 +5,17 @@ class FightsController < ApplicationController
   # GET /fights.json
   def index
     @fights = Fight.all
+    @logs = []
+    @fights.each do |fight|
+      @logs << { :fight => fight, :winner => Fighter.find(fight.winner_id), :winner_log => fight.log.split("|")[0], :loser => Fighter.find(fight.loser_id), :loser_log => fight.log.split("|")[1] }
+    end
   end
 
   # GET /fights/1
   # GET /fights/1.json
   def show
+    fight = Fight.find(params[:id])
+    @log = { :fight => fight, :winner => Fighter.find(fight.winner_id), :winner_log => fight.log.split("|")[0], :winner_score => fight.winner_score, :loser => Fighter.find(fight.loser_id), :loser_log => fight.log.split("|")[1], :loser_score => fight.loser_score }
   end
 
   # GET /fights/new

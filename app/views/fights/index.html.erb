@@ -1,25 +1,25 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Fights</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fights.each do |fight| %>
-      <tr>
-        <td><%= link_to 'Show', fight %></td>
-        <td><%= link_to 'Edit', edit_fight_path(fight) %></td>
-        <td><%= link_to 'Destroy', fight, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Fight', new_fight_path %>
+<div class="container wide">
+    <%= link_to '<button type="button" class="btn btn-warning">Home</button>'.html_safe, root_path %>
+        <center>
+            <% @logs.each do |log| %>
+                <div class="row">
+                    <div class="col-3">
+                        <%= image_tag cl_image_path(log[:winner].photo.url), class: 'alias winner' %>
+                    </div>
+                    <div class="col-3">
+                        <p class="winner-label">
+                            <%=log[:winner].name%> won</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="loser-label">
+                            <%=log[:loser].name%> lost</p>
+                    </div>
+                    <div class="col-3">
+                        <%= image_tag cl_image_path(log[:loser].photo.url), class: 'alias loser' %>
+                    </div>
+                </div>
+                <td><%= link_to "<button type='button' class='btn btn-dark'>View</button>".html_safe, log[:fight] %></td>
+                <%= link_to "<button type='button' class='btn btn-danger'>Delete</button>".html_safe, log[:fight], method: :delete, data: { confirm: 'Are you sure?' } %>
+                <% end %>
+        </center>
+</div>
