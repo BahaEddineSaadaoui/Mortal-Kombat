@@ -1,0 +1,133 @@
+<div class="container wide">
+    <%= link_to '<button type="button" class="btn btn-warning">Home</button>'.html_safe, root_path %>
+        <div class="row" id="arena-config">
+            <div class="col-sm">
+                <div id="fighter-one">
+                    <center>
+                        <h3 class="title">Choose the first fighter</h3>
+                    </center>
+                    <div class="row">
+                        <% @fighters.each do |fighter| %>
+                            <div class="column col-centered">
+                                <%= image_tag cl_image_path(fighter.photo.url), id: 'fone', class: 'alias selectable', data: {id: fighter.id} %>
+                            </div>
+                            <%end%>
+                    </div>
+                </div>
+                <div id="weapons-one">
+                    <center>
+                        <h3 class="title">Give him some weapons</h3>
+                    </center>
+                    <div class="row">
+                        <% @weapons.each do |weapon| %>
+                            <div class="column col-centered">
+                                <%= image_tag cl_image_path(weapon.photo.url), id: 'wone', class: 'alias selectable', data: {id: weapon.id} %>
+                            </div>
+                            <%end%>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <center>
+                    <div class="row">
+                        <div class="col-4"><img id="alias1" class="alias"></div>
+                        <div class="col-4">
+                            <%= image_tag("vs.png", class: "vs") %>
+                        </div>
+                        <div class="col-4"><img id="alias2" class="alias"></div>
+                    </div>
+                </center>
+                <%= form_tag(arena_path, method: :post) do %>
+                    <input type="hidden" value="" name="fighter-one" id="af1" />
+                    <input type="hidden" value="" name="fighter-two" id="af2" />
+                    <input type="hidden" value="" name="weapons-one" id="aw1" />
+                    <input type="hidden" value="" name="weapons-two" id="aw2" />
+                    <button type="submit" class="btn btn-danger" id="begin">Start the fight !</button>
+                    <% end %>
+            </div>
+            <div class="col-sm">
+                <div id="fighter-two">
+                    <center>
+                        <h3 class="title">Choose the second fighter</h3>
+                    </center>
+                    <div class="row">
+                        <% @fighters.each do |fighter| %>
+                            <div class="column col-centered">
+                                <%= image_tag cl_image_path(fighter.photo.url), id: 'ftwo', class: 'alias selectable', data: {id: fighter.id} %>
+                            </div>
+                            <%end%>
+                    </div>
+                </div>
+                <div id="weapons-two">
+                    <center>
+                        <h3 class="title">Give him some weapons</h3>
+                    </center>
+                    <div class="row">
+                        <% @weapons.each do |weapon| %>
+                            <div class="column col-centered">
+                                <%= image_tag cl_image_path(weapon.photo.url), id: 'wtwo', class: 'alias selectable', data: {id: weapon.id} %>
+                            </div>
+                            <%end%>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#fighter-one").show();
+    $("#fighter-two").show();
+});
+
+$("[id=fone]").click(function() {
+    $("#fighter-one").hide();
+    $('#alias1').attr('src', $(this).attr('src'));
+    $('.vs').show();
+    $("#weapons-one").show();
+    if ($("#weapons-two").is(":visible")) {
+        $("#begin").show();
+    }
+    $("#af1").val($(this).data("id"));
+});
+$("[id=wone]").click(function() {
+    var w = $("#aw1").val();
+    if ($(this).hasClass("selected")) {
+        $(this).removeClass("selected");
+        if (w.includes($(this).data("id"))) {
+            w = w.replace($(this).data("id"), "");
+        }
+    } else {
+        $(this).addClass("selected");
+        if (!w.includes($(this).data("id"))) {
+            w += $(this).data("id");
+        }
+    }
+    $("#aw1").val(w.toString());
+});
+
+$("[id=ftwo]").click(function() {
+    $("#fighter-two").hide();
+    $('#alias2').attr('src', $(this).attr('src'));
+    $('.vs').show();
+    $("#weapons-two").show();
+    if ($("#weapons-one").is(":visible")) {
+        $("#begin").show();
+    }
+    $("#af2").val($(this).data("id"));
+});
+$("[id=wtwo]").click(function() {
+    var w = $("#aw2").val();
+    if ($(this).hasClass("selected")) {
+        $(this).removeClass("selected");
+        if (w.includes($(this).data("id"))) {
+            w = w.replace($(this).data("id"), "");
+        }
+    } else {
+        $(this).addClass("selected");
+        if (!w.includes($(this).data("id"))) {
+            w += $(this).data("id");
+        }
+    }
+    $("#aw2").val(w.toString());
+});
+</script>

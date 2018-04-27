@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180424193536) do
+ActiveRecord::Schema.define(version: 20180426223433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20180424193536) do
     t.integer "url_file_size"
     t.datetime "url_updated_at"
     t.integer "fighter_id"
+    t.integer "weapon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180424193536) do
     t.integer "damages"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "fighter_id"
   end
 
   create_table "progresses_weapons", id: false, force: :cascade do |t|
